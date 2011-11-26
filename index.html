@@ -1,10 +1,32 @@
 <html>
 <head>
 	<title>Het Rijksmuseum Memory Spel</title>
-	<link href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style.css"></link>
 </head>
 <body>
 	<h1>Het Rijksmuseum Memory Spel</h1>
+
+<div id="sidebar">
+	<div class="pull"> </div>
+	<div class="container">
+		<div class="item">
+			<div class="lbl-qry">Find your match</div>
+			<div id="qry" class="inputBtn" contenteditable="true" />
+		</div>
+		<div class="item">
+			<div class="lbl-qry">Choose grid size</div>
+			<div id="qry" class="inputBtn" contenteditable="true">10</div>
+		</div>
+		<div class="item">
+			<div id="submit" class="submitBtn">play</div>
+		</div>	
+		<div class="inputs">
+			
+			<div id="qry" contenteditable="true" />
+			<div id="qry" contenteditable="true" />
+		</div>
+	</div>
+</div>
 
 <script src="http://code.jquery.com/jquery-1.6.4.js"></script>
 <script src="js/Sprite3D.min.js"></script>
@@ -12,7 +34,7 @@
 <script src="js/utils.js"></script>
 <script src="js/memory.js"></script>
 <script src="js/card.js"></script>
-
+<script src="js/settings.js"></script>
 <script>
 
 $.getJSON("http://nbl01.local/rijks/json.php?qry=rembrandt&callback=?", {}, function(data) {
