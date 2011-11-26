@@ -13,9 +13,9 @@ function Memory(cards) {
 
 Memory.prototype = {
 	init: function () {
-		this.cards.sort(function (){
-			return (Math.round(Math.random())-0.5);
-		});
+		// this.cards.sort(function (){
+		// 	return (Math.round(Math.random())-0.5);
+		// });
 
 		this.cols = 5;
 		this.rows = ~~(this.cards.length / this.cols);
@@ -32,12 +32,14 @@ Memory.prototype = {
 		}
 	},
 
-	checkWin: function() {
+	onFound: function() {
+		this.countFound++;
 		if (this.countFound == this.cards.length / 2)
 			this.win();
 	},
 
-	checkLoss: function () {
+	onMistake: function () {
+		this.countMistakes++;
 		if (this.countMistakes > this.maxMistakes)
 			this.lose();
 	},
