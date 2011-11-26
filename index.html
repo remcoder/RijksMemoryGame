@@ -76,7 +76,7 @@ h1
 
 <script>
 
-$.getJSON("http://172.16.47.43/rijks/json.php?qry=rembrandt&callback=?", {}, function(data) {
+$.getJSON("http://nbl01.local/rijks/json.php?qry=rembrandt&callback=?", {}, function(data) {
 	hoi = data;
 
 
@@ -86,6 +86,7 @@ $.getJSON("http://172.16.47.43/rijks/json.php?qry=rembrandt&callback=?", {}, fun
 
 var Stage = Sprite3D.createCenteredContainer();
 var Sprites = [];
+var game;
 
 function init(set) {
 		console.log(set.length);
@@ -97,13 +98,13 @@ function init(set) {
 	{
 		var obj = set[s];
 
-		var r = ~~(s / cols);
-		var c = s % cols;
+		obj.found = false;
 
-		cards.push( new Card(obj.id, obj.imageUrl, r, c, rows, cols) );
+		cards.push( new Card(obj) );
+		cards.push( new Card(obj) );
 	}
 
-	var game = new Memory(cards);
+	game = new Memory(cards);
 }
 
 function update(t) {
