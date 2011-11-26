@@ -38,6 +38,7 @@ div
 	height: 100px;
 	display: inline-block;
 	margin: 5px;
+	cursor: pointer;
 }
 
 .card *
