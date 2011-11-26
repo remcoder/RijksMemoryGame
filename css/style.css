@@ -46,13 +46,12 @@ div
 	width: 100px;
 	height: 100px;
 
-	background-color: blue;
+	background: url('img/bg-card.jpg') no-repeat 0 0;
 	xdisplay:none;
 	-webkit-transform: rotateY(180deg);
 	-webkit-backface-visibility: hidden;
 }
 
-h1
-{
+h1 {
 	xz-index: 9999;
 }
