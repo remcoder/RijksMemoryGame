@@ -11,7 +11,11 @@
 
 	<div class="items">
 		<div class="lbl-qry">Find your set</div>
-		<div id="qry" class="inputBtn" contenteditable="true"></div>
+		<input id="qry" class="inputBtn" />
+	</div>
+	<div class="items msg" style="display: none;">
+		<div class="lbl-qry"><b>Error</b></div>
+		<div class="bodytext">No results found. Please try a different search</div>
 	</div>
 	<div class="items">
 		<div class="lbl-qry">Uitleg over het spel</div>
@@ -35,10 +39,20 @@
 <script>
 
 $('#submit').click(function(e){
-	var qry = $('#qry').text();
+	e.preventDefault();
+	
+	$('#settings .msg').hide();
+
+	var qry = $('#qry').val();
 	$.getJSON("http://nbl01.local/rijks/json.php?qry="+qry+"&callback=?", {}, function(data) {
-		$('#settings').hide();
-		init(data);
+		// console.log(data.length);
+		if(data.length >= 10){
+			$('#settings').hide();
+			init(data);
+		} else {
+			//show warning not enough records found
+			$('#settings .msg').show();
+		}
 	});
 });
 
