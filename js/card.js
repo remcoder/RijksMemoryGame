@@ -11,7 +11,7 @@ Card.prototype = {
 
 		this.$card = $("<div>").addClass("card");
 		var $wrapper = $("<div>").addClass("wrapper").addClass("front");
-		var $front = $("<img>").attr("src", this.obj.url + "&100x100");
+		var $front = $("<img>").attr("src", this.obj.url + "&200x200");
 		$wrapper.append($front);
 		var $back = $("<div>").addClass("back");
 

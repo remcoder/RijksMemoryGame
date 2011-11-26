@@ -21,7 +21,6 @@ div
 	height: 100px;
 	display: inline-block;
 	margin: 5px;
-	border: 1px solid red;
 }
 .card *
 {
@@ -32,12 +31,22 @@ div
 	position: absolute;
 	width: 100px;
 	height: 100px;
+-moz-border-radius: 5px;
+	border-radius: 5px;	
+	overflow: hidden;
 }
 
 .card .front img {
 	xdisplay: inline-block;
 	xvertical-align: center;
 	-webkit-backface-visibility: hidden;
+	position: absolute;
+	left: -10px;
+	top: -10px;
+	width: 120px;
+	height: 120px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
 }
 
 .card .back {
@@ -45,10 +54,12 @@ div
 	width: 100px;
 	height: 100px;
 
-	background: url('img/bg-card.jpg') no-repeat 0 0;
+	background: url('../img/bg-card.jpg') no-repeat 0 0;
 	xdisplay:none;
 	-webkit-transform: rotateY(180deg);
 	-webkit-backface-visibility: hidden;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 h1 {
