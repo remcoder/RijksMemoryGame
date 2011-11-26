@@ -43,14 +43,6 @@ Card.prototype = {
 		}, this));
 	},
 
-	// - if the image was already found, do nothing
-	// - first move:
-	// 	 - flip image
-	// 	 - set img id to buffer
-	//
-	//
-	//
-	//
 	onClick : function () {
 		if (this.memory.blocked)
 		{
@@ -109,9 +101,5 @@ Card.prototype = {
 	flip: function (callback) {
 		this.sprite.rotateY(180).update();
 		this.faceUp = !this.faceUp;
-	},
-
-	flash: function (color) {
-
 	}
 };

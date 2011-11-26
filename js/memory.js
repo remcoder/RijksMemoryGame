@@ -13,9 +13,9 @@ function Memory(cards) {
 
 Memory.prototype = {
 	init: function () {
-		// this.cards.sort(function (){
-		// 	return (Math.round(Math.random())-0.5);
-		// });
+		this.cards.sort(function (){
+			return (Math.round(Math.random())-0.5);
+		});
 
 		this.cols = 5;
 		this.rows = ~~(this.cards.length / this.cols);
