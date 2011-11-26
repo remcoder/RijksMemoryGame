@@ -25,6 +25,7 @@ Memory.prototype = {
 			var card = this.cards[c];
 
 			card.init(row,col, this.rows, this.cols, this);
+			this.lookup[card.obj.id] = card;
 		}
 	}
 }
