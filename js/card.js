@@ -83,20 +83,21 @@ Card.prototype = {
 			if (this.obj == this.memory.buffer.obj ) // we have a match
 			{
 				console.log("match!");
-				this.obj.found;
+				this.obj.found = true;
 
-				this.memory.checkWin();
-				return;
+				this.memory.onFound();
 			}
 			else
 			{
 				console.log("no match :-(");
+
 				this.memory.blocked = true;
 				setTimeout( $.proxy(function() {
 					this.flip();
 					this.memory.buffer.flip();
 					this.memory.blocked = false;
 					this.memory.buffer = null;
+					this.memory.onMistake();
 				}, this), 2000)
 			}
 
@@ -105,7 +106,7 @@ Card.prototype = {
 
 	},
 
-	flip: function () {
+	flip: function (callback) {
 		this.sprite.rotateY(180).update();
 		this.faceUp = !this.faceUp;
 	},
