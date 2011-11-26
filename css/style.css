@@ -80,33 +80,34 @@ div
 	border-radius: 5px;
 }
 
-#settings {
+.msgBlock {
 	width: 400px;
 	height: 300px;
 	position: relative;
 	margin: 0 auto;
-		-moz-border-radius: 25px;
+	-moz-border-radius: 25px;
 	border-radius: 25px;
-	background: #fff;
+	background: url('../img/bg-card.jpg') no-repeat 6px 184px #8E9A8E;
 	z-index: 2;
 	top: 60px;
 
 	text-align: left;
 }
 
-#settings h1{
+.msgBlock h1{
 	font-family: 'Cardo', serif;
 	font-size: 2em;
 	text-indent: 1em;
 	margin: 19px 0;
 	display: inline-block;
+	color: #B6C4B5;
 }
 
 .items{
 	float: left;
 	text-indent: 2em;
 	width: 100%;
-margin: 0 0 15px 0;
+	margin: 0 0 15px 0;
 }
 .lbl-qry{
 	width: 155px;
@@ -115,15 +116,21 @@ margin: 0 0 15px 0;
 
 .inputBtn{
 	border: 1px dotted black;
-	width: 200px;
-	float: left;
 	text-indent: 0.3em;
-	height: 1.4em;
+	height: 2.4em;
+	margin: 0;
+	display: inline-block;
+	width: 352px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 1.3em;
 }
 .bodytext{
 	clear:left;
+	text-indent: 0em;
+	padding: 0 2em;
 }
-#submit{
+.submitBtn{
 	position: absolute;
 	top: 210px;
 	left: 140px;
@@ -139,7 +146,7 @@ margin: 0 0 15px 0;
 	-webkit-box-shadow: inset 0px 0px 6px #fff;
 	border: 1px solid #5EA617;
 	border-radius: 10px;
-	font: bold 30px/8px Helvetica, Sans-Serif;
+	font: bold 28px/4px Helvetica, Sans-Serif;
 	text-align: center;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -149,8 +156,10 @@ margin: 0 0 15px 0;
 	-webkit-transition: color 0.25s ease-in-out;
 	transition: color 0.25s ease-in-out;
 }
-
-#submit:hover {
+#replay{
+	width: 155px;
+}
+.submitBtn:hover {
 	color: #145675;
 	cursor: pointer;
 	-moz-transition: color 0.25s ease-in-out;
@@ -161,3 +170,6 @@ margin: 0 0 15px 0;
 	color: orange;
 }
 
+#final, #final h1{
+	display: none;
+}
