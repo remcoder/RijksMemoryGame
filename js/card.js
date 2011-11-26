@@ -105,7 +105,7 @@ Card.prototype = {
 
 	},
 
-	flip: function () {
+	flip: function (callback) {
 		this.sprite.rotateY(180).update();
 		this.faceUp = !this.faceUp;
 	},

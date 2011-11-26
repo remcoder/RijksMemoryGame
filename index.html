@@ -27,6 +27,7 @@
 <script src="http://code.jquery.com/jquery-1.6.4.js"></script>
 <script src="js/Sprite3D.min.js"></script>
 <script src="js/stats.js"></script>
+<script src="js/Tween.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/memory.js"></script>
 <script src="js/card.js"></script>
@@ -69,22 +70,20 @@ function init(set) {
 	game = new Memory(cards);
 }
 
-function update(t) {
-
-	for (var s=0 ; s<Sprites.length ; s++) {
-		var sprite = Sprites[s];
-		//sprite.update();
-		//var yRot = ((t) / 10) % 1000;
-		//sprite.setRotation(0, yRot ,0).update();
-	}
+function update(dt) {
+	Tween.tick( dt );
+	//Stage.updateChildrenAll();
+	stats.update();
 }
 
+var prevDate = new Date;
 var loop = function() {
-	var t = new Date();
-	//document.title = t;
-	update(t);
-	stats.update();
+	var now = new Date();
+
+	update(now - prevDate);
+
 	requestAnimFrame(loop)
+	prevDate = now;
 }
 
 var stats = new Stats();
