@@ -2,29 +2,26 @@
 <head>
 	<title>Het Rijksmuseum Memory Spel</title>
 	<link rel="stylesheet" href="css/style.css"></link>
+	<link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<div id="sidebar">
-	<div class="pull"> </div>
-	<div class="container">
-		<div class="item">
-			<div class="lbl-qry">Find your match</div>
-			<div id="qry" class="inputBtn" contenteditable="true" />
-		</div>
-		<div class="item">
-			<div class="lbl-qry">Choose grid size</div>
-			<div id="qry" class="inputBtn" contenteditable="true">10</div>
-		</div>
-		<div class="item">
-			<div id="submit" class="submitBtn">play</div>
-		</div>
-		<div class="inputs">
+<div id="settings">
+	<h1>Het Rijksmuseum Memory Spel</h1>
 
-			<div id="qry" contenteditable="true" />
-			<div id="qry" contenteditable="true" />
+	<div class="items">
+		<div class="lbl-qry">Find your set</div>
+		<div id="qry" class="inputBtn" contenteditable="true"></div>
+	</div>
+	<div class="items">
+		<div class="lbl-qry">Uitleg over het spel</div>
+		<div class="bodytext">
+			<p>
+				Aaaah
+			</p>
 		</div>
 	</div>
+	<div id="submit" class="submitBtn">play</div>
 </div>
 
 <script src="http://code.jquery.com/jquery-1.6.4.js"></script>
@@ -36,9 +33,13 @@
 <script src="js/settings.js"></script>
 <script>
 
-$.getJSON("http://nbl01.local/rijks/json.php?qry=appel&callback=?", {}, function(data) {
-	init(data);
-})
+$('#submit').click(function(e){
+	var qry = $('#qry').text();
+	$.getJSON("http://nbl01.local/rijks/json.php?qry="+qry+"&callback=?", {}, function(data) {
+		$('#settings').hide();
+		init(data);
+	});
+});
 
 var Stage = Sprite3D.createCenteredContainer();
 var Sprites = [];
