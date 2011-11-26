@@ -4,6 +4,10 @@ function Memory(cards) {
 	this.cards = cards;
 	this.moves = 0;
 	this.move = 0;
+	this.blocked = false;
+	this.countFound = 0;
+	this.countMistakes = 0;
+	this.maxMistakes = 5;
 	this.init();
 }
 
@@ -25,7 +29,25 @@ Memory.prototype = {
 			var card = this.cards[c];
 
 			card.init(row,col, this.rows, this.cols, this);
-			this.lookup[card.obj.id] = card;
 		}
+	},
+
+	checkWin: function() {
+		if (this.countFound == this.cards.length / 2)
+			this.win();
+	},
+
+	checkLoss: function () {
+		if (this.countMistakes > this.maxMistakes)
+			this.lose();
+	},
+
+	win: function() {
+		alert("Yay! je hebt gewonnen!");
+	},
+
+	lose: function() {
+		alert("helaas.. je hebt gefaald :-(");
 	}
+
 }

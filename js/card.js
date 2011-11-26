@@ -3,6 +3,7 @@ function Card(obj) {
 
 	this.obj = obj;
 	this.memory = null;
+	this.faceUp = false;
 }
 
 Card.prototype = {
@@ -38,7 +39,6 @@ Card.prototype = {
 
 		this.$card.click($.proxy(function (evt) {
 			evt.preventDefault();
-			console.log("click");
 			this.onClick(evt);
 		}, this));
 	},
@@ -52,7 +52,23 @@ Card.prototype = {
 	//
 	//
 	onClick : function () {
-		if (this.obj.found) return;
+		if (this.memory.blocked)
+		{
+			console.log("blocked!");
+			return;
+		}
+
+		if (this.faceUp)
+		{
+			console.log("already facing up!");
+			return;
+		}
+
+		if (this.obj.found)
+		{
+			console.log("already found!");
+			return;
+		}
 
 		this.flip();
 
@@ -68,13 +84,20 @@ Card.prototype = {
 			{
 				console.log("match!");
 				this.obj.found;
-				return;
 
+				this.memory.checkWin();
+				return;
 			}
 			else
 			{
 				console.log("no match :-(");
-				setTimeout( $.proxy(function() { this.flip(); this.memory.buffer.flip(); }, this), 2000)
+				this.memory.blocked = true;
+				setTimeout( $.proxy(function() {
+					this.flip();
+					this.memory.buffer.flip();
+					this.memory.blocked = false;
+					this.memory.buffer = null;
+				}, this), 2000)
 			}
 
 			this.memory.move = 0;
@@ -84,6 +107,7 @@ Card.prototype = {
 
 	flip: function () {
 		this.sprite.rotateY(180).update();
+		this.faceUp = !this.faceUp;
 	},
 
 	flash: function (color) {

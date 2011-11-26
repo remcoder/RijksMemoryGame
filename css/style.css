@@ -22,6 +22,7 @@ div
 	display: inline-block;
 	margin: 5px;
 }
+
 .card *
 {
 	-webkit-backface-visibility: hidden;
@@ -32,7 +33,7 @@ div
 	width: 100px;
 	height: 100px;
 -moz-border-radius: 5px;
-	border-radius: 5px;	
+	border-radius: 5px;
 	overflow: hidden;
 }
 
@@ -46,7 +47,7 @@ div
 	width: 120px;
 	height: 120px;
 	-moz-border-radius: 5px;
-	border-radius: 5px;	
+	border-radius: 5px;
 }
 
 .card .back {
