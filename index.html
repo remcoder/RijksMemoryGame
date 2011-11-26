@@ -5,10 +5,10 @@
 	<link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	
+
 <div id="settings">
 	<h1>Het Rijksmuseum Memory Spel</h1>
-	
+
 	<div class="items">
 		<div class="lbl-qry">Find your set</div>
 		<input id="qry" class="inputBtn" />
@@ -70,9 +70,14 @@ function init(set) {
 		var obj = set[s];
 
 		obj.found = false;
+		var c1 = new Card(obj);
+		var c2 = new Card(obj);
 
-		cards.push( new Card(obj) );
-		cards.push( new Card(obj) );
+		c1.other = c2;
+		c2.other = c1;
+
+		cards.push( c1 );
+		cards.push( c2 );
 	}
 
 	game = new Memory(cards);

@@ -3,12 +3,16 @@ function Memory(cards) {
 	this.buffer = "";
 	this.cards = cards;
 	this.moves = 0;
-
-	this.display();
+	this.move = 0;
+	this.blocked = false;
+	this.countFound = 0;
+	this.countMistakes = 0;
+	this.maxMistakes = 5;
+	this.init();
 }
 
 Memory.prototype = {
-	display: function () {
+	init: function () {
 		this.cards.sort(function (){
 			return (Math.round(Math.random())-0.5);
 		});
@@ -24,8 +28,26 @@ Memory.prototype = {
 
 			var card = this.cards[c];
 
-			card.display(row,col, this.rows, this.cols);
-
+			card.init(row,col, this.rows, this.cols, this);
 		}
+	},
+
+	checkWin: function() {
+		if (this.countFound == this.cards.length / 2)
+			this.win();
+	},
+
+	checkLoss: function () {
+		if (this.countMistakes > this.maxMistakes)
+			this.lose();
+	},
+
+	win: function() {
+		alert("Yay! je hebt gewonnen!");
+	},
+
+	lose: function() {
+		alert("helaas.. je hebt gefaald :-(");
 	}
+
 }
