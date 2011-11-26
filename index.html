@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div id="settings">
+<div id="settings" class="msgBlock">
 	<h1>Het Rijksmuseum Memory Spel</h1>
 
 	<div class="items">
@@ -15,7 +15,14 @@
 	<div class="items msg" style="display: none;">
 		<div class="bodytext">Geen resultaten gevonden. Probeer opnieuw.</div>
 	</div>
-	<div id="submit" class="submitBtn">play</div>
+	<div id="play" class="submitBtn">play</div>
+</div>
+
+<div id="final" class="msgBlock">
+	<h1 class="win">Yah! Je hebt gewonnen.</h1>
+	<h1 class="lose">Jammer! Je hebt verloren.</h1>
+
+	<div id="replay" class="submitBtn">opnieuw</div>
 </div>
 
 <script src="http://code.jquery.com/jquery-1.6.4.js"></script>
@@ -28,9 +35,7 @@
 <script src="js/settings.js"></script>
 <script>
 
-$('#submit').click(function(e){
-	e.preventDefault();
-
+$('#play').click(function(){
 	$('#settings .msg').hide();
 
 	var qry = $('#qry').val();
@@ -44,6 +49,10 @@ $('#submit').click(function(e){
 			$('#settings .msg').show();
 		}
 	});
+});
+
+$('#replay').click(function(e){
+	document.reload();
 });
 
 var Stage = Sprite3D.createCenteredContainer();

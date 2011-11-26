@@ -45,11 +45,10 @@ Memory.prototype = {
 	},
 
 	win: function() {
-		alert("Yay! je hebt gewonnen!");
+		$('#final, #final h1.win').show();
 	},
 
 	lose: function() {
-		alert("helaas.. je hebt gefaald :-(");
+		$('#final, #final h1.lose').show();
 	}
-
 }

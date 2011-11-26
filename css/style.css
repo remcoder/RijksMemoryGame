@@ -80,12 +80,12 @@ div
 	border-radius: 5px;
 }
 
-#settings {
+.msgBlock {
 	width: 400px;
 	height: 300px;
 	position: relative;
 	margin: 0 auto;
-		-moz-border-radius: 25px;
+	-moz-border-radius: 25px;
 	border-radius: 25px;
 	background: url('../img/bg-card.jpg') no-repeat 6px 184px #8E9A8E;
 	z-index: 2;
@@ -94,7 +94,7 @@ div
 	text-align: left;
 }
 
-#settings h1{
+.msgBlock h1{
 	font-family: 'Cardo', serif;
 	font-size: 2em;
 	text-indent: 1em;
@@ -130,7 +130,7 @@ div
 	text-indent: 0em;
 	padding: 0 2em;
 }
-#submit{
+.submitBtn{
 	position: absolute;
 	top: 210px;
 	left: 140px;
@@ -156,8 +156,10 @@ div
 	-webkit-transition: color 0.25s ease-in-out;
 	transition: color 0.25s ease-in-out;
 }
-
-#submit:hover {
+#replay{
+	width: 155px;
+}
+.submitBtn:hover {
 	color: #145675;
 	cursor: pointer;
 	-moz-transition: color 0.25s ease-in-out;
@@ -168,3 +170,6 @@ div
 	color: orange;
 }
 
+#final, #final h1{
+	display: none;
+}
