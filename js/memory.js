@@ -3,12 +3,12 @@ function Memory(cards) {
 	this.buffer = "";
 	this.cards = cards;
 	this.moves = 0;
-
-	this.display();
+	this.move = 0;
+	this.init();
 }
 
 Memory.prototype = {
-	display: function () {
+	init: function () {
 		this.cards.sort(function (){
 			return (Math.round(Math.random())-0.5);
 		});
@@ -24,8 +24,7 @@ Memory.prototype = {
 
 			var card = this.cards[c];
 
-			card.display(row,col, this.rows, this.cols);
-
+			card.init(row,col, this.rows, this.cols, this);
 		}
 	}
 }

@@ -1,10 +1,9 @@
 <html>
 <head>
 	<title>Het Rijksmuseum Memory Spel</title>
-	<link href="css/style.css"></
+	<link rel="stylesheet" href="css/style.css"></link>
 </head>
 <body>
-	<h1>Het Rijksmuseum Memory Spel</h1>
 
 <script src="http://code.jquery.com/jquery-1.6.4.js"></script>
 <script src="js/Sprite3D.min.js"></script>
@@ -16,11 +15,7 @@
 <script>
 
 $.getJSON("http://nbl01.local/rijks/json.php?qry=rembrandt&callback=?", {}, function(data) {
-	hoi = data;
-
-
 	init(data);
-
 })
 
 var Stage = Sprite3D.createCenteredContainer();
@@ -38,9 +33,14 @@ function init(set) {
 		var obj = set[s];
 
 		obj.found = false;
+		var c1 = new Card(obj);
+		var c2 = new Card(obj);
 
-		cards.push( new Card(obj) );
-		cards.push( new Card(obj) );
+		c1.other = c2;
+		c2.other = c1;
+
+		cards.push( c1 );
+		cards.push( c2 );
 	}
 
 	game = new Memory(cards);
