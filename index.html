@@ -1,0 +1,142 @@
+<html>
+<head>
+	<title>Het Rijksmuseum Memory Spel</title>
+	<style>
+body
+{
+	background-color: #000;
+	text-align: center;
+}
+
+div
+{
+	border:
+}
+
+.page
+{
+	display: inline-block;
+	border: 1px solid white;
+
+}
+
+.card
+{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin: 5px;
+	border: 1px solid red;
+}
+.card *
+{
+	-webkit-backface-visibility: hidden;
+}
+
+.card .front {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+}
+
+.card .front img {
+	xdisplay: inline-block;
+	xvertical-align: center;
+	-webkit-backface-visibility: hidden;
+}
+
+.card .back {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+
+	background-color: blue;
+	xdisplay:none;
+	-webkit-transform: rotateY(180deg);
+	-webkit-backface-visibility: hidden;
+}
+
+
+h1
+{
+	xz-index: 9999;
+}
+	</style>
+</head>
+<body>
+	<h1>Het Rijksmuseum Memory Spel</h1>
+
+<script src="http://code.jquery.com/jquery-1.6.4.js"></script>
+<script src="js/Sprite3D.min.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/memory.js"></script>
+<script src="js/card.js"></script>
+
+
+<script>
+
+$.getJSON("http://172.16.47.43/rijks/json.php?qry=rembrandt&callback=?", {}, function(data) {
+	hoi = data;
+
+
+	init(data);
+
+})
+
+var Stage = Sprite3D.createCenteredContainer();
+var Sprites = [];
+
+function init(set) {
+		console.log(set.length);
+
+	var cards = [];
+	var cols = 5;
+	var rows = ~~(set.length / cols);
+	for (var s=0 ; s<set.length ; s++)
+	{
+		var obj = set[s];
+
+		var r = ~~(s / cols);
+		var c = s % cols;
+
+		cards.push( new Card(obj.id, obj.imageUrl, r, c, rows, cols) );
+	}
+
+	var game = new Memory(cards);
+}
+
+function update(t) {
+
+	for (var s=0 ; s<Sprites.length ; s++) {
+		var sprite = Sprites[s];
+		//sprite.update();
+		//var yRot = ((t) / 10) % 1000;
+		//sprite.setRotation(0, yRot ,0).update();
+	}
+}
+
+var loop = function() {
+	var t = new Date();
+	//document.title = t;
+	update(t);
+	stats.update();
+	requestAnimFrame(loop)
+}
+
+var stats = new Stats();
+
+// Align top-left
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+
+document.body.appendChild(stats.domElement);
+
+
+loop();
+
+
+</script>
+</body>
+</html>
