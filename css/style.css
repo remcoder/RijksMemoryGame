@@ -118,6 +118,7 @@ margin: 0 0 15px 0;
 	width: 200px;
 	float: left;
 	text-indent: 0.3em;
+	height: 1.4em;
 }
 .bodytext{
 	clear:left;
@@ -156,3 +157,7 @@ margin: 0 0 15px 0;
 	-webkit-transition: color 0.25s ease-in-out;
 	transition: color 0.25s ease-in-out;
 }
+.msg{
+	color: orange;
+}
+
