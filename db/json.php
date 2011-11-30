@@ -1,6 +1,4 @@
 <?php
-include_once('lib/db.php');
-
 ini_set('default_charset', 'UTF-8');
 
 $jr = new JsonResponse('127.0.0.1', '', '', '');
@@ -73,7 +71,7 @@ class JsonResponse {
 	}
  
 	private function is_valid_callback($subject) {
-    $identifier_syntax = '/^[$_\p{L}][$_\p{L}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*+$/u';
+    // $identifier_syntax = '/^[$_\p{L}][$_\p{L}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*+$/u';
 
     $reserved_words = array('break', 'do', 'instanceof', 'typeof', 'case',
 	      'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue',
@@ -82,9 +80,9 @@ class JsonResponse {
 	      'extends', 'super', 'const', 'export', 'import', 'implements', 'let',
 	      'private', 'public', 'yield', 'interface', 'package', 'protected',
 	      'static', 'null', 'true', 'false');
-
-    return preg_match($identifier_syntax, $subject)
-        && ! in_array(mb_strtolower($subject, 'UTF-8'), $reserved_words);
+	return ! in_array(mb_strtolower($subject, 'UTF-8'), $reserved_words);
+    // return preg_match($identifier_syntax, $subject)
+    //     && ! in_array(mb_strtolower($subject, 'UTF-8'), $reserved_words);
 	}
 
 	private function closeJSON(){

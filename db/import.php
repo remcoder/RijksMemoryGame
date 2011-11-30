@@ -1,7 +1,5 @@
 <?php
-include_once('lib/db.php');
-
-define("SITE_PATH", "/var/www/html/rijksmemorygame");
+define("SITE_PATH", "/var/www/games/rijksmemorygame");
 define("XML_FILES", "/data");
  
 ini_set('default_charset', 'UTF-8');
