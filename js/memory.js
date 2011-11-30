@@ -45,10 +45,10 @@ Memory.prototype = {
 	},
 
 	win: function() {
-		$('#final, #final h1.win').show();
+		$('#final, #final h1.win').css('display', 'inline-block');
 	},
 
 	lose: function() {
-		$('#final, #final h1.lose').show();
+		$('#final, #final h1.lose').css('display', 'inline-block');
 	}
 }

@@ -34,24 +34,36 @@
 <script src="js/card.js"></script>
 <script>
 
-$('#play').click(function(){
-	$('#settings .msg').hide();
 
-	var qry = $('#qry').val();
-	$.getJSON("http://games.noblestreet.eu/rmg/json.php?qry="+qry+"&callback=?", {}, function(data) {
-		// console.log(data.length);
-		if(data.length >= 10){
-			$('#settings').hide();
-			init(data);
-		} else {
-			//show warning not enough records found
-			$('#settings .msg').show();
-		}
+
+$(document).ready(function() { 
+
+	//center message block onscreen
+	$('.msgBlock').each(function(){
+		var t = ($(document).height() - $(this).outerHeight())/2;
+		$(this).css('top', t);
 	});
-});
 
-$('#replay').click(function(e){
-	document.reload();
+	$('#play').click(function(){
+		$('#settings .msg').hide();
+
+		var qry = $('#qry').val();
+		$.getJSON("http://games.noblestreet.eu/rmg/json.php?qry="+qry+"&callback=?", {}, function(data) {
+			// console.log(data.length);
+			if(data.length >= 10){
+				$('#settings').hide();
+				init(data);
+			} else {
+				//show warning not enough records found
+				$('#settings .msg').show();
+			}
+		});
+	});
+
+	$('#replay').click(function(e){
+		document.reload();
+	});
+
 });
 
 var Stage = Sprite3D.createCenteredContainer();
