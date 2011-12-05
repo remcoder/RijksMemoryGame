@@ -37,9 +37,9 @@
 
 $('#play').click(function(){
 	$('#settings .msg').hide();
-
+	var host = "http://games.noblestreet.nl/rmg/json.php";
 	var qry = $('#qry').val();
-	$.getJSON("http://nbl01.local/rijks/json.php?qry="+qry+"&callback=?", {}, function(data) {
+	$.getJSON( host + "?qry="+qry+"&callback=?", {}, function(data) {
 		// console.log(data.length);
 		if(data.length >= 10){
 			$('#settings').hide();
