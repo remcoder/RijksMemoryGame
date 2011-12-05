@@ -11,10 +11,17 @@ Card.prototype = {
 		this.memory = memory;
 
 		this.$card = $("<div>").addClass("card");
-		var $wrapper = $("<div>").addClass("wrapper").addClass("front");
+		var $wrapper = $("<div>")
+			.addClass("wrapper")
+			.addClass("face")
+			.addClass("front");
+
 		var $front = $("<img>").attr("src", this.obj.url + "&200x200");
 		$wrapper.append($front);
-		var $back = $("<div>").addClass("back");
+
+		var $back = $("<div>")
+			.addClass("face")
+			.addClass("back");
 
 		this.$card.append($wrapper);
 		this.$card.append($back);
