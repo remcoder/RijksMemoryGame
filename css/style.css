@@ -97,9 +97,9 @@ div
 	top: 60px;
 
 	text-align: left;
-	-moz-box-shadow: 0 0 5px #888;
-	-webkit-box-shadow: 0 0 5px#888;
-	box-shadow: 0 0 5px #888;
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 5pxrgba(0,0,0,0.5);
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 .msgBlock h1{
