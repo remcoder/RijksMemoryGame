@@ -45,7 +45,8 @@ div
 	display: inline-block;
 	margin: 5px;
 	cursor: pointer;
-
+	box-shadow: rgba(0,0,0,0.5) 3px 3px 4px;
+	-webkit-box-shadow: rgba(0,0,0,0.8) 0px 0px 8px;
 	-webkit-transition: all 0.2s linear;
 }
 
@@ -185,4 +186,6 @@ div
 	xmargin: 15px 0 0 15px;
 	border: ridge 4px #630;
 	-webkit-transition: all 0.25s linear;
+
+	-webkit-box-shadow: rgba(0,0,0,0.5) 5px 5px 8px;
 }
