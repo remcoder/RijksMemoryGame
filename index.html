@@ -2,7 +2,7 @@
 <head>
 	<title>Het Rijksmuseum Memory Spel</title>
 	<link rel="stylesheet" href="css/style.css"></link>
-	<link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'> -->
 </head>
 <body>
 
@@ -10,7 +10,7 @@
 	<h1>Het Rijksmuseum Memory Spel</h1>
 
 	<div class="items">
-		<input id="qry" class="inputBtn" placeholder="bijv. rembrandt, van gogh"/>
+		<input id="qry" class="inputBtn" placeholder="bijv. rembrandt, van gogh" value="rembrandt"/>
 	</div>
 	<div class="items msg" style="display: none;">
 		<div class="bodytext">Geen resultaten gevonden. Probeer opnieuw.</div>
@@ -25,17 +25,13 @@
 	<div id="replay" class="submitBtn">opnieuw</div>
 </div>
 
-<script src="http://code.jquery.com/jquery-1.6.4.js"></script>
+<script src="js/jquery-1.6.4.min.js"></script>
 <script src="js/Sprite3D.min.js"></script>
-<script src="js/stats.js"></script>
-<script src="js/Tween.js"></script>
-<script src="js/utils.js"></script>
 <script src="js/memory.js"></script>
 <script src="js/card.js"></script>
-<script src="js/settings.js"></script>
 <script>
 
-$('#play').click(function(){
+function play(){
 	$('#settings .msg').hide();
 	var host = "http://games.noblestreet.nl/rmg/json.php";
 	var qry = $('#qry').val();
@@ -43,74 +39,37 @@ $('#play').click(function(){
 		// console.log(data.length);
 		if(data.length >= 10){
 			$('#settings').hide();
-			init(data);
+			//init(data);
+			game = new Memory(data);
 		} else {
 			//show warning not enough records found
 			$('#settings .msg').show();
 		}
 	});
-});
+}
 
-$('#replay').click(function(e){
-	document.reload();
-});
 
 var Stage = Sprite3D.createCenteredContainer();
 var Sprites = [];
 var game;
 
-function init(set) {
-		console.log(set.length);
 
-	var cards = [];
-	var cols = 5;
-	var rows = ~~(set.length / cols);
-	for (var s=0 ; s<set.length ; s++)
-	{
-		var obj = set[s];
+$(document).ready(function() {
 
-		obj.found = false;
-		var c1 = new Card(obj);
-		var c2 = new Card(obj);
+	//center message block onscreen
+	$('.msgBlock').each(function(){
+		var t = ($(document).height() - $(this).outerHeight())/2;
+		$(this).css('top', t);
+	});
 
-		c1.other = c2;
-		c2.other = c1;
+	$('#play').click(play);
 
-		cards.push( c1 );
-		cards.push( c2 );
-	}
+	$('#replay').click(function(e){
+		window.location.reload();
+	});
 
-	game = new Memory(cards);
-}
-
-function update(dt) {
-	Tween.tick( dt );
-	//Stage.updateChildrenAll();
-	//stats.update();
-}
-
-var prevDate = new Date;
-var loop = function() {
-	var now = new Date();
-
-	update(now - prevDate);
-
-	requestAnimFrame(loop)
-	prevDate = now;
-}
-
-// var stats = new Stats();
-
-// // Align top-left
-// stats.domElement.style.position = 'absolute';
-// stats.domElement.style.left = '0px';
-// stats.domElement.style.top = '0px';
-
-// document.body.appendChild(stats.domElement);
-
-
-loop();
-
+	play()
+});
 
 </script>
 </body>
