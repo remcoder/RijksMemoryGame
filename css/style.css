@@ -180,3 +180,9 @@ div
 #final, #final h1{
 	display: none;
 }
+
+#lives img {
+	xmargin: 15px 0 0 15px;
+	border: ridge 4px #630;
+	-webkit-transition: all 0.25s linear;
+}

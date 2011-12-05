@@ -28,8 +28,7 @@ Card.prototype = {
 
 		this.sprite = new Sprite3D(this.$card[0]);
 
-		Sprites.push(this.sprite);
-		Stage.addChild(this.sprite);
+		this.memory.stage.addChild(this.sprite);
 
 		this.startPos = {
 			x : 50 + 110 * (column-cols/2),

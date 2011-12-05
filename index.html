@@ -26,12 +26,14 @@
 	<div id="replay" class="submitBtn">opnieuw</div>
 </div>
 
+
+
 <script src="js/jquery-1.6.4.min.js"></script>
 <script src="js/Sprite3D.min.js"></script>
 <script src="js/memory.js"></script>
 <script src="js/card.js"></script>
 <script>
-
+var memory;
 function play(){
 	$('#settings .msg').hide();
 	var host = "http://games.noblestreet.nl/rmg/json.php";
@@ -41,7 +43,7 @@ function play(){
 		if(data.length >= 10){
 			$('#settings').hide();
 			//init(data);
-			game = new Memory(data);
+			memory = new Memory(data);
 		} else {
 			//show warning not enough records found
 			$('#settings .msg').show();
@@ -49,13 +51,10 @@ function play(){
 	});
 }
 
-
-var Stage = Sprite3D.createCenteredContainer();
-var Sprites = [];
-var game;
+$(function() {
 
 
-$(document).ready(function() {
+
 
 	//center message block onscreen
 	$('.msgBlock').each(function(){
