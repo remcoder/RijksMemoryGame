@@ -47,7 +47,7 @@ div
 	cursor: pointer;
 	box-shadow: rgba(0,0,0,0.5) 3px 3px 4px;
 	-webkit-box-shadow: rgba(0,0,0,0.8) 0px 0px 8px;
-	-webkit-transition: all 0.2s linear;
+	-webkit-transition: all 0.5s linear;
 }
 
 .card .face {
@@ -98,7 +98,7 @@ div
 
 	text-align: left;
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 0 5pxrgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
 	box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 

@@ -7,8 +7,10 @@ function Card(obj) {
 }
 
 Card.prototype = {
-	init: function (row, column, rows, cols, memory) {
+	init: function (row, column, memory, callback) {
 		this.memory = memory;
+		var rows = this.memory.rows;
+		var cols = this.memory.cols;
 
 		this.$card = $("<div>").addClass("card");
 		var $wrapper = $("<div>")
@@ -16,7 +18,11 @@ Card.prototype = {
 			.addClass("face")
 			.addClass("front");
 
-		var $front = $("<img>").attr("src", this.obj.url + "&200x200");
+		var $front = $("<img>");
+		if (callback)
+			$front.load(callback);
+		$front.attr("src", this.obj.url + "&200x200");
+
 		$wrapper.append($front);
 
 		var $back = $("<div>")
@@ -38,7 +44,7 @@ Card.prototype = {
 		this.sprite
 				.setRegistrationPoint( 50, 50, 0 )
 				.setPosition(this.startPos.x, this.startPos.y, 0)
-				.setRotation(0, 180, 0)
+
 				.update();
 
 		this.found = false;
@@ -47,6 +53,13 @@ Card.prototype = {
 			evt.preventDefault();
 			this.onClick(evt);
 		}, this));
+	},
+
+	setPos : function(row, column) {
+		var x = 50 + 110 * (column-this.memory.cols/2);
+		var y = 50 + 110 * (row-this.memory.rows/2);
+		console.log(row,column,this.obj.url);
+		this.sprite.setPosition(x,y,0);
 	},
 
 	onClick : function () {

@@ -11,12 +11,9 @@ function Memory(set) {
 	this.lives = this.initLives();
 
 
-
-
 	// setup main stage and load the cards
 	this.stage = Sprite3D.createCenteredContainer();
-	this.load(set);
-	this.init();
+	this.load(set, $.proxy(this.onLoad,this) );
 }
 
 Memory.prototype = {
@@ -47,7 +44,7 @@ Memory.prototype = {
 		return lives;
 	},
 
-	load: function (set) {
+	load: function (set, callback) {
 		//console.log(set.length);
 
 		var cards = this.cards;
@@ -67,15 +64,14 @@ Memory.prototype = {
 			cards.push( c1 );
 			cards.push( c2 );
 		}
-	},
 
-	init: function () {
-		this.cards.sort(function (){
-			return (Math.round(Math.random())-0.5);
-		});
+		// this.cards.sort(function (){
+		// 	return (Math.round(Math.random())-0.5);
+		// });
 
 		this.cols = 5;
 		this.rows = ~~(this.cards.length / this.cols);
+		this.loading = 0; // keep track of loading images
 
 		// display cards
 		for(var c=0 ; c<this.cards.length ; c++)
@@ -84,8 +80,39 @@ Memory.prototype = {
 			var col = c % this.cols;
 
 			var card = this.cards[c];
+			this.loading++;
+			card.init(row, col, this, $.proxy(function() {
+				console.log('loaded');
+				this.loading--;
+				if (callback && this.loading == 0)
+					callback();
+			}, this));
+		}
+	},
 
-			card.init(row,col, this.rows, this.cols, this);
+	onLoad: function() {
+		console.log('loading finished!');
+
+		setTimeout($.proxy(this.randomize,this), 1000);
+	},
+
+	randomize: function() {
+		console.log('randomizing');
+		this.cards.sort(function (){
+			return (Math.round(Math.random())-0.5);
+		});
+
+		// display cards in order
+		for(var i=0 ; i<this.cards.length ; i++)
+		{
+			var row = ~~(i/this.cols);
+			var col = i % this.cols;
+
+			var card = this.cards[i];
+
+			card.setPos(row,col);
+			card.sprite.setRotation(0, 180, 0);
+			card.sprite.update();
 		}
 	},
 
