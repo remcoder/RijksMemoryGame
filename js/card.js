@@ -50,7 +50,7 @@ Card.prototype = {
 		this.found = false;
 
 			// bind on touch event if available
-		var evtType = Modernizr.touch ? "touchstart" : "pff";
+		var evtType = Modernizr.touch ? "touchend" : "click";
 		this.$card.bind(evtType, $.proxy(function (evt) {
 			evt.preventDefault();
 			this.onClick(evt);
@@ -60,7 +60,7 @@ Card.prototype = {
 	setPos : function(row, column) {
 		var x = 50 + 110 * (column-this.memory.cols/2);
 		var y = 50 + 110 * (row-this.memory.rows/2);
-		console.log(row,column,this.obj.url);
+		//console.log(row,column,this.obj.url);
 		this.sprite.setPosition(x,y,0);
 	},
 
