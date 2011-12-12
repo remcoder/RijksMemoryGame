@@ -49,8 +49,8 @@ Card.prototype = {
 
 		this.found = false;
 
-		// bind on touch event if available
-		var evtType = document.body.ontouchstart ? "ontouchstart" : "click";
+			// bind on touch event if available
+		var evtType = Modernizr.touch ? "touchstart" : "pff";
 		this.$card.bind(evtType, $.proxy(function (evt) {
 			evt.preventDefault();
 			this.onClick(evt);
