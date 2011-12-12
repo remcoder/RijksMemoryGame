@@ -49,7 +49,9 @@ Card.prototype = {
 
 		this.found = false;
 
-		this.$card.click($.proxy(function (evt) {
+		// bind on touch event if available
+		var evtType = document.body.ontouchstart ? "ontouchstart" : "click";
+		this.$card.bind(evtType, $.proxy(function (evt) {
 			evt.preventDefault();
 			this.onClick(evt);
 		}, this));
