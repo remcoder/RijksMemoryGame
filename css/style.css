@@ -123,15 +123,18 @@ div
 }
 
 .inputBtn{
-	border: 1px dotted black;
+	xborder: 1px dotted black;
 	text-indent: 0.3em;
 	height: 2.4em;
 	margin: 0;
 	display: inline-block;
 	width: 352px;
-	-moz-border-radius: 5px;
 	border-radius: 5px;
-	font-size: 1.3em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 2em;
+	outline: 0;
 }
 .bodytext{
 	clear:left;
@@ -144,8 +147,8 @@ div
 	left: 140px;
 	display: block;
 	width: 120px;
-	height: 30px;
-	padding: 26px 0 0 0;
+	xheight: 30px;
+	padding: 25px 0;
 	margin: 0 auto;
 	background: #398525;
 	background: -moz-linear-gradient(top, #8DD297 0%, #398525 100%);
@@ -167,12 +170,13 @@ div
 #replay{
 	width: 155px;
 }
-.submitBtn:hover {
+.submitBtn:hover, .submitBtn:focus {
 	color: #145675;
 	cursor: pointer;
 	-moz-transition: color 0.25s ease-in-out;
 	-webkit-transition: color 0.25s ease-in-out;
 	transition: color 0.25s ease-in-out;
+	outline:0;
 }
 .msg{
 	color: orange;

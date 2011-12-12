@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- <meta name="HandheldFriendly" content="True"> -->
-  <!-- <meta name="MobileOptimized" content="320"> -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<title>Het Rijksmuseum Memory Spel</title>
 	<link rel="stylesheet" href="css/style.css"></link>
@@ -12,7 +9,7 @@
 </head>
 <body>
 
-<div id="settings" class="msgBlock">
+<form id="settings" class="msgBlock">
 	<h1>Het Rijksmuseum Memory Spel</h1>
 
 	<div class="items">
@@ -21,8 +18,8 @@
 	<div class="items msg" style="display: none;">
 		<div class="bodytext">Geen resultaten gevonden. Probeer opnieuw.</div>
 	</div>
-	<div id="play" class="submitBtn">play</div>
-</div>
+	<input type="submit" id="play" class="submitBtn" value="play" />
+</form>
 
 <div id="final" class="msgBlock">
 	<h1 class="win">Yah! Je hebt gewonnen.</h1>
@@ -58,22 +55,18 @@ function play(){
 
 $(function() {
 
-
-
-
 	//center message block onscreen
 	$('.msgBlock').each(function(){
 		var t = ($(document).height() - $(this).outerHeight())/2;
 		$(this).css('top', t);
 	});
 
-	$('#play').click(play);
+	$('form').submit(function(e) { e.preventDefault(); play(); });
 
 	$('#replay').click(function(e){
 		window.location.reload();
 	});
 
-	//play() // auto-start for testing
 });
 
 </script>
