@@ -193,3 +193,9 @@ div
 
 	-webkit-box-shadow: rgba(0,0,0,0.5) 5px 5px 8px;
 }
+.twitter-share-button {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	margin-left: -50px;
+}
