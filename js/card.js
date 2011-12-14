@@ -97,7 +97,8 @@ Card.prototype = {
 			{
 				console.log("match!");
 				this.obj.found = true;
-
+				this.memory.nextPlayer();
+				this.memory.move = 0;
 				this.memory.onFound();
 			}
 			else
@@ -111,10 +112,11 @@ Card.prototype = {
 					this.memory.blocked = false;
 					this.memory.buffer = null;
 					this.memory.onMistake();
+					this.memory.nextPlayer();
+					this.memory.move = 0;
+
 				}, this), 2000)
 			}
-
-			this.memory.move = 0;
 		}
 
 	},

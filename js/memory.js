@@ -8,7 +8,8 @@ function Memory(set) {
 	this.countFound = 0;
 	this.countMistakes = 0;
 	this.maxMistakes = 5;
-	this.lives = this.initLives();
+	//this.lives = this.initLives();
+	this.player = 0; // 0: not playing, 1: player 1, 2: player 2
 
 
 	// setup main stage and load the cards
@@ -114,6 +115,9 @@ Memory.prototype = {
 			card.sprite.setRotation(0, 180, 0);
 			card.sprite.update();
 		}
+
+		this.setActivePlayer(1);
+		$("#player1").addClass("active");
 	},
 
 	onFound: function() {
@@ -125,22 +129,22 @@ Memory.prototype = {
 	onMistake: function () {
 		//$("#mistakes").append("<img src='http://rijksmuseumspotlight.com/Content/800/SK-A-135.jpg'>");
 
-		var last = this.lives.children.length - 1;
-		var sprite = this.lives.children[last];
+		// var last = this.lives.children.length - 1;
+		// var sprite = this.lives.children[last];
 
-		var _this = this;
-		sprite.domElement.addEventListener(
-    	'webkitTransitionEnd',
-    	function( event ) {
-    		_this.lives.removeChildAt(last);
-    	}, false );
+		// var _this = this;
+		// sprite.domElement.addEventListener(
+  //   	'webkitTransitionEnd',
+  //   	function( event ) {
+  //   		_this.lives.removeChildAt(last);
+  //   	}, false );
 
-    anim = ~~(Math.random() * 3);
+  //   anim = ~~(Math.random() * 3);
 
-		if (anim == 0) sprite.rotateX(90).update();
-		if (anim == 1) sprite.rotateY(90).update();
-		if (anim == 2) sprite.rotateZ(180).update();
-		sprite.domElement.style.opacity = 0;
+		// if (anim == 0) sprite.rotateX(90).update();
+		// if (anim == 1) sprite.rotateY(90).update();
+		// if (anim == 2) sprite.rotateZ(180).update();
+		// sprite.domElement.style.opacity = 0;
 
 		this.countMistakes++;
 		if (this.countMistakes > this.maxMistakes)
@@ -153,5 +157,26 @@ Memory.prototype = {
 
 	lose: function() {
 		$('#final, #final h1.lose').css('display', 'inline-block');
+	},
+
+	setActivePlayer: function(n) {
+		this.player = n;
+		document.title = "player " + n;
+		$(".scorecard").removeClass("active");
+		if (n == 1)
+		{
+			$("#player1").addClass("active");
+		}
+		else if (n == 2)
+		{
+			$("#player2").addClass("active");
+		}
+	},
+
+	nextPlayer: function() {
+		if (this.player == 1)
+			this.setActivePlayer(2);
+		else
+			this.setActivePlayer(1);
 	}
 }
