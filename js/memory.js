@@ -6,10 +6,9 @@ function Memory(set) {
 	this.move = 0;
 	this.blocked = false;
 	this.countFound = 0;
-	this.countMistakes = 0;
-	this.maxMistakes = 5;
 	this.player = 0; // 0: not playing, 1: player 1, 2: player 2
-
+	this.score1 = 0;
+	this.score2 = 0;
 
 	// setup main stage and load the cards
 	this.stage = Sprite3D.createCenteredContainer();
@@ -89,17 +88,22 @@ Memory.prototype = {
 		$("#player1").addClass("active");
 	},
 
-	onFound: function() {
+	onFound: function(card) {
+		if (this.player == 1)
+			this.score1++;
+		if (this.player == 2)
+			this.score2++;
+
+		card.$card.addClass("player" + this.player);
+		card.other.$card.addClass("player" + this.player);
+
 		this.countFound++;
 		if (this.countFound == this.cards.length / 2)
 			this.win();
 	},
 
 	onMistake: function () {
-
-		this.countMistakes++;
-		if (this.countMistakes > this.maxMistakes)
-			this.lose();
+		this.nextPlayer();
 	},
 
 	win: function() {

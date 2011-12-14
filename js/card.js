@@ -4,6 +4,7 @@ function Card(obj) {
 	this.obj = obj;
 	this.memory = null;
 	this.faceUp = false;
+	this.$card = null;
 }
 
 Card.prototype = {
@@ -97,9 +98,8 @@ Card.prototype = {
 			{
 				console.log("match!");
 				this.obj.found = true;
-				this.memory.nextPlayer();
 				this.memory.move = 0;
-				this.memory.onFound();
+				this.memory.onFound(this);
 			}
 			else
 			{
@@ -112,7 +112,6 @@ Card.prototype = {
 					this.memory.blocked = false;
 					this.memory.buffer = null;
 					this.memory.onMistake();
-					this.memory.nextPlayer();
 					this.memory.move = 0;
 
 				}, this), 2000)

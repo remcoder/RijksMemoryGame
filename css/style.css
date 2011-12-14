@@ -207,7 +207,7 @@ div
     margin: -221px 0 0 -493px;
     position: absolute;
     top: 50%;
-    width: 200px;	
+    width: 200px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
     display: none;
@@ -226,4 +226,12 @@ div
 }
 #player2{
 	margin-left: 285px;
+}
+
+.card.player1 {
+	border: 1px solid red;
+}
+
+.card.player2 {
+	border: 1px solid blue;
 }
