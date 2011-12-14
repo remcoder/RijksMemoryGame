@@ -6,8 +6,6 @@
 	<link rel="stylesheet" href="css/style.css"></link>
 	<link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
 	<script src="js/modernizr-2.0.6.js"></script>
-
-
 </head>
 <body>
 
@@ -23,11 +21,19 @@
 	<input type="submit" id="play" class="submitBtn" value="play" />
 </form>
 
-<div id="final" class="msgBlock">
+<form id="final" class="msgBlock">
 	<h1 class="win">Yah! Je hebt gewonnen.</h1>
 	<h1 class="lose">Jammer! Je hebt verloren.</h1>
+	<input type="submit" id="replay" class="submitBtn" value="opnieuw" />
+</form>
 
-	<div id="replay" class="submitBtn">opnieuw</div>
+<div id="player1" class="scorecard">
+	<h2>Player 01</h2>
+	<div class="score">0</div>
+</div>	
+<div id="player2" class="scorecard">
+	<h2>Player 02</h2>
+	<div class="score">0</div>
 </div>
 
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="Speel het Rijksmuseum Memory spel!" data-lang="nl" data-hashtags="rijksmemory">Tweet</a>
@@ -48,6 +54,8 @@ function play(){
 		if(data.length >= 10){
 			document.location.hash = "#" + qry;
 			$('#settings').hide();
+
+			$('.scorecard').show();
 			//init(data);
 			memory = new Memory(data);
 		} else {
