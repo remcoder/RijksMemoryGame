@@ -8,7 +8,6 @@ function Memory(set) {
 	this.countFound = 0;
 	this.countMistakes = 0;
 	this.maxMistakes = 5;
-	//this.lives = this.initLives();
 	this.player = 0; // 0: not playing, 1: player 1, 2: player 2
 
 
@@ -18,32 +17,6 @@ function Memory(set) {
 }
 
 Memory.prototype = {
-
-	initLives : function() {
-		var lives = Sprite3D.createCenteredContainer();
-		$(lives.domElement).css({
-			position: "absolute",
-			top: "15px",
-			left: "15px",
-			//"-webkit-perspective": "800px",
-			"-webkit-perspective-origin-x": "245px",
-		}).attr("id", "lives");
-
-
-		for (var s=0; s<6 ; s++)
-		{
-			var img = new Image();
-			img.src= "img/life.jpg";
-			img.width=42;
-
-			var sprite = new Sprite3D(img);
-			lives.addChild(sprite);
-			sprite.setPosition( s * (42+15), 0, 0 );
-			sprite.update();
-		}
-
-		return lives;
-	},
 
 	load: function (set, callback) {
 		//console.log(set.length);
@@ -65,10 +38,6 @@ Memory.prototype = {
 			cards.push( c1 );
 			cards.push( c2 );
 		}
-
-		// this.cards.sort(function (){
-		// 	return (Math.round(Math.random())-0.5);
-		// });
 
 		this.cols = 5;
 		this.rows = ~~(this.cards.length / this.cols);
@@ -127,24 +96,6 @@ Memory.prototype = {
 	},
 
 	onMistake: function () {
-		//$("#mistakes").append("<img src='http://rijksmuseumspotlight.com/Content/800/SK-A-135.jpg'>");
-
-		// var last = this.lives.children.length - 1;
-		// var sprite = this.lives.children[last];
-
-		// var _this = this;
-		// sprite.domElement.addEventListener(
-  //   	'webkitTransitionEnd',
-  //   	function( event ) {
-  //   		_this.lives.removeChildAt(last);
-  //   	}, false );
-
-  //   anim = ~~(Math.random() * 3);
-
-		// if (anim == 0) sprite.rotateX(90).update();
-		// if (anim == 1) sprite.rotateY(90).update();
-		// if (anim == 2) sprite.rotateZ(180).update();
-		// sprite.domElement.style.opacity = 0;
 
 		this.countMistakes++;
 		if (this.countMistakes > this.maxMistakes)
