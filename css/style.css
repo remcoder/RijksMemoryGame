@@ -201,7 +201,8 @@ div
 }
 
 .scorecard{
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-transition: background-color 0.100s linear;
     height: 432px;
     left: 50%;
     margin: -221px 0 0 -493px;
@@ -212,6 +213,11 @@ div
 	border-radius: 5px;
     display: none;
 }
+
+.scorecard.active{
+	background-color: rgba(255, 255, 255, 0.4)
+}
+
 .scorecard h2{
     color: #B6C4B5;
     display: inline-block;
@@ -229,7 +235,7 @@ div
 }
 
 .card.player1 {
-	border: 1px solid red;
+	border: 2px solid rgba(255,128,0,0.5);
 }
 
 .card.player2 {

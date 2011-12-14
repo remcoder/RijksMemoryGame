@@ -82,10 +82,10 @@ Memory.prototype = {
 			card.setPos(row,col);
 			card.sprite.setRotation(0, 180, 0);
 			card.sprite.update();
+
 		}
 
 		this.setActivePlayer(1);
-		$("#player1").addClass("active");
 	},
 
 	onFound: function(card) {
